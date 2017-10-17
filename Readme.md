@@ -2,7 +2,7 @@
 
 * Create credentials for an API Key at https://console.developers.google.com/apis/credentials
 * Enable the QPX Express Airfare API https://console.developers.google.com/apis/library/qpxexpress.googleapis.com/
-* Create a file called `key.txt` containing your API credentials with contents similar to:
+* Create a file called `key.php` containing your API credentials with contents similar to:
 
 ```php
 <?php
