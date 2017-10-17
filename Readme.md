@@ -6,6 +6,6 @@
 
 ```php
 <?php
-	$key = "QIAERTNE-xyz2387fuie"
+    $key = "QIAERTNE-xyz2387fuie"
 ?>
 ```
