@@ -56,8 +56,16 @@
             <?php
 
             // Send input to API and retrieve result in an array
-            $slices = array(array('origin' => $_POST['origin'], 'destination' => $_POST['destination'], 'date' => $_POST['hdate'])
-                          , array('origin' => $_POST['destination'], 'destination' => $_POST['origin'], 'date' => $_POST['rdate']));
+            $slices = array(
+                array(
+                    'origin' => $_POST['origin'], 
+                    'destination' => $_POST['destination'], 
+                    'date' => $_POST['hdate']),
+                array(
+                    'origin' => $_POST['destination'], 
+                    'destination' => $_POST['origin'], 
+                    'date' => $_POST['rdate'])
+            );
 
             $resultAsArray = getInformation($slices);
 
@@ -123,6 +131,7 @@ function getInformation($slices) {
             "solutions": 10
         }
     }';
+    // echo "Post-Data:<br><pre>" . $postData . "</pre>";
 
     $curlConnection = curl_init();
     curl_setopt($curlConnection, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
@@ -132,7 +141,9 @@ function getInformation($slices) {
     curl_setopt($curlConnection, CURLOPT_FOLLOWLOCATION, TRUE);
     curl_setopt($curlConnection, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($curlConnection, CURLOPT_SSL_VERIFYPEER, FALSE);
-    $results = json_decode(curl_exec($curlConnection), true);
+    $json = curl_exec($curlConnection);
+    // echo "Response-Data:<br><pre>" . $json . "</pre>";
+    $results = json_decode($json, true);
     if (isset($results['error'])) {
         var_dump($results);
         exit();
