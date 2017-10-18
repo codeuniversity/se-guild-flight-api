@@ -1,0 +1,9 @@
+{
+        "request": {
+            "passengers": {
+                "adultCount": 1
+                },
+            "slice": [{"origin":"BER","destination":"CDG","date":"2017-10-25"},{"origin":"CDG","destination":"BER","date":"2017-11-01"}],
+            "solutions": 10
+        }
+    }
