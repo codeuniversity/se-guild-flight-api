@@ -16,7 +16,7 @@
 * Copy the php folder into your htdocs
 
 ## How to run the python example ##
-* Install [Flask](http://flask.pocoo.org/)
+* Install [flask](http://flask.pocoo.org/), dateutil and requests (using pip preferably in a virtualenv)
 * Create a file called `key.py` in the python folder:
 
 ```python

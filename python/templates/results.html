@@ -21,10 +21,10 @@
         {% for segment in slice['segment'] %}
             {{ segment['flight']['carrier'] + segment['flight']['number'] }}:
             {% for leg in segment['leg'] %}
-               {{ leg['departureTime'] | pretty_time }} 
+               {{ leg['departureTime'] | pretty_time }}
                <i>{{ airport_names[leg['origin']]      }}</i> {{ leg['origin'] }}
 
-               {{ leg['arrivalTime']   | pretty_time }} 
+               {{ leg['arrivalTime']   | pretty_time }}
                <i>{{ airport_names[leg['destination']] }}</i> {{ leg['destination'] }}
                <br>
             {% endfor %}
@@ -33,11 +33,4 @@
     </p>
 {% endfor %}
 
-request json:
-<pre><code class='json'>{{ api_request | pretty_json }}</code></pre>
-
-response json:
-<pre><code class='json'>{{ api_response | pretty_json }}</code></pre>
-
-<script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}

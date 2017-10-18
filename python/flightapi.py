@@ -1,16 +1,11 @@
+import json
 from flask import Flask, render_template, request
 import dateutil.parser
 import requests
-import json
 from key import key
 
 
 app = Flask(__name__)
-
-
-@app.template_filter()
-def pretty_json(obj):
-    return json.dumps(obj, indent=2)
 
 
 @app.template_filter()
@@ -51,9 +46,6 @@ def do_request():
     url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + key
     api_response = requests.post(url, json=api_request).json()
 
-    # with open('../examples/response.json') as f:
-    #    api_response = json.load(f)
-
     # map airport codes to their names
     airport_names = {
         airport['code'] : airport['name']
@@ -62,6 +54,5 @@ def do_request():
 
     return render_template('results.html',
                            req=request.form,
-                           api_request=api_request,
                            api_response=api_response,
                            airport_names=airport_names)
