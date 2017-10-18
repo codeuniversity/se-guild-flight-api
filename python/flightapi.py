@@ -1,4 +1,3 @@
-import json
 from flask import Flask, render_template, request
 import dateutil.parser
 import requests
@@ -48,7 +47,7 @@ def do_request():
 
     # map airport codes to their names
     airport_names = {
-        airport['code'] : airport['name']
+        airport['code']: airport['name']
         for airport in api_response['trips']['data']['airport']
     }
 
