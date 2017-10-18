@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+<p>
+    <form method="post">
+        Origin airport:<br>
+         <select name="origin">
+            <option value="BER">Berlin</option>
+            <option value="MUC">München</option>
+            <option value="FRA">Frankfurt</option>
+            <option value="WDH">Windhoek</option>
+            <option value="CDG">Paris</option>
+            <option value="AMS">Amsterdam</option>
+        </select><br>
+        Destination airport:<br>
+        <select name="destination">
+            <option value="BER">Berlin</option>
+            <option value="MUC">München</option>
+            <option value="FRA">Frankfurt</option>
+            <option value="WDH">Windhoek</option>
+            <option value="CDG" selected>Paris</option>
+            <option value="AMS">Amsterdam</option>
+        </select>
+        <br>
+        Depart:<br>
+            <input type="date" name="hdate" value="2017-10-25"><br>
+        Return:<br>
+            <input type="date" name="rdate" value="2017-11-01"><br>
+        <br><br>
+        <input type="submit" value="search">
+    </form>
+</p>
+{% endblock %}

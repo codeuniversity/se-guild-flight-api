@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+<p>
+    Your search:  flight (1 adult) from {{ req.origin }}
+    to {{ req.destination }} and back,
+    departs {{ req.hdate }}, returns {{ req.rdate }}
+</p>
+
+<p><a href="/">New search</a></p>
+<h2>Results</h2>
+
+{% for trip in api_response['trips']['tripOption'] %}
+    <p><b>------- ALTERNATIVE {{ loop.index }} ---------</b><br>
+    Cost: {{ trip['saleTotal'] }}<br>
+    {% for slice in trip['slice'] %}
+        <b>
+            {% if loop.index == 1 %} Depart
+            {% else %} Return
+            {% endif %}
+        </b><br>
+        {% for segment in slice['segment'] %}
+            {{ segment['flight']['carrier'] + segment['flight']['number'] }}:
+            {% for leg in segment['leg'] %}
+               {{ leg['departureTime'] | pretty_time }} 
+               <i>{{ airport_names[leg['origin']]      }}</i> {{ leg['origin'] }}
+
+               {{ leg['arrivalTime']   | pretty_time }} 
+               <i>{{ airport_names[leg['destination']] }}</i> {{ leg['destination'] }}
+               <br>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    </p>
+{% endfor %}
+
+request json:
+<pre><code class='json'>{{ api_request | pretty_json }}</code></pre>
+
+response json:
+<pre><code class='json'>{{ api_response | pretty_json }}</code></pre>
+
+<script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
