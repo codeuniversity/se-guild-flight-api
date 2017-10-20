@@ -14,7 +14,7 @@
     Cost: {{ trip['saleTotal'] }}<br>
     {% for slice in trip['slice'] %}
         <b>
-            {% if loop.index == 1 %} Depart
+            {% if loop.first %} Depart
             {% else %} Return
             {% endif %}
         </b><br>
